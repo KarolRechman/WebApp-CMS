@@ -1,0 +1,41 @@
+html, .mask {
+    height: 100% !important;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.card {
+    background: #fc4a1a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom left, rgba(247, 183, 51, 0.95), rgba(252, 74, 26, 0.95)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom left, rgba(247, 183, 51, 0.95), rgba(252, 74, 26, 0.95)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#LogIn {
+    border-radius: 25px 25px 25px 25px;
+    /*max-width: 95% !important;*/
+    margin: auto !important;
+    /*background-color: rgba(72, 0, 255,1)!important;*/
+}
+
+label:not(.active) {
+    color: white;
+}
+input{
+    max-width:85% !important;
+}
+
+@media (max-width: 813px) {
+    html, body, header, .mask {
+        height: 100% !important;
+    }
+    .container-fluid, .container, .mask, .col-md-6 {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+}

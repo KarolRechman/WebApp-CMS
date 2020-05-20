@@ -1,0 +1,150 @@
+footer a {
+    color: #4285F4 !important;
+}
+
+.h2Admin {
+    font-weight: bold !important;
+    margin-bottom: 1% !important;
+    margin-top: 1% !important;
+}
+
+.btn-round-black {
+    border-radius: 10em;
+    background-color: black;
+    transition: 0.2s ease-in-out;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+    .btn-round-black:hover {
+        background-color: transparent !important;
+        transition: 0.2s ease-in-out;
+        color: black;
+        border: 2px solid black;
+        font-weight: bold;
+    }
+
+.bootstrap-select .btn {
+    background-color: #fafafa !important;
+    color: black;
+}
+
+.bootstrap-select .actions-btn {
+    background-color: #eeeeee !important;
+}
+.badge {
+    font-size: 1.2em !important;
+    min-width: 5vw;
+    max-width: 20vw;
+}
+
+.hrBlack {
+    border-top: 1px solid black;
+}
+
+#eTrike:not(.active) {
+    /*background-image: url('/images/car.svg');*/
+    height: 22%;
+    width: 22%;
+    display: initial;
+    background-repeat: no-repeat;
+    position: absolute;
+    /*top: 22%;*/
+    padding-right: 10% !important;
+    padding-left: 5% !important;
+    margin-right: 10% !important;
+    margin-left: 1% !important;
+}
+
+.TxtBlack:not(.is-focused) > label {
+    color: black;
+}
+
+.TxtBlack.is-focused > label {
+    color: #9c27b0;
+    font-weight: 900;
+}
+/*#eTrike {
+    filter: invert(50%) sepia(151%) saturate(278%) hue-rotate(180deg) brightness(14%) contrast(9%);
+}*/
+.BiggerFont {
+    font-size: 1.5em;
+}
+
+.sidebar .nav i {
+    color: black;
+}
+
+.IconBigFont {
+    font-size: 2.5em !important;
+}
+
+.navbar-absolute {
+    position: sticky !important;
+    background-color: hsla(200, 30%, 95%,.97) !important;
+}
+
+.content {
+    margin-top: 1% !important;
+    min-height: calc(100vh - 175px) !important;
+}
+
+
+.modal .modal-dialog {
+    margin-top: 130px;
+}
+
+.modal-dialog .modal-header {
+    border-bottom: none;
+    padding: 24px 24px 0;
+}
+
+.modal-dialog .modal-footer {
+    border-top: none;
+    padding: 24px;
+}
+
+.modal-dialog .modal-content {
+    box-shadow: 0 27px 24px 0 rgba(0,0,0,.2), 0 40px 77px 0 rgba(0,0,0,.22);
+    border-radius: 6px;
+    border: none;
+}
+
+    .modal-dialog .modal-content .card-signup {
+        margin: 0;
+    }
+
+        .modal-dialog .modal-content .card-signup .modal-header {
+            padding-top: 0;
+        }
+
+.card-signup .card-header {
+    width: 100% !important;
+}
+
+.modal .modal-dialog.modal-login .modal-header .close {
+    color: #fff;
+    text-shadow: none;
+    position: absolute;
+}
+
+.modal-dialog .modal-header .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.card-title {
+    text-align: center !important;
+}
+
+@media (max-width: 700px) {
+    .modal-dialog {
+        margin-top: 5%;
+    }
+}
+
+#AddCategory {
+    float: right !important;
+    padding-left: 14em !important;
+}
