@@ -1,29 +1,8 @@
-//var controller = document.location.pathname.split("/");
-//var url = controller[0] + "/" + controller[1] + "/" + controller[2];
 var pageURL = window.location.origin;
 if (pageURL.includes("localhost") == true) {
     pageURL = window.location.pathname;
 }
 
-//$(document).ready(function () {
-
-//    var options = {};
-//    options.url = pageURL+"/api/values";
-//    options.type = "GET";
-//    options.dataType = "json";
-//    options.success = function (data) {
-
-//        data.forEach(function (element) {
-//            $("#result").append("<h3>" + element + "</h3>");
-//        });
-//    };
-//    options.error = function () {
-//        $("#msg").html("Error while calling the Web API!");
-//    };
-//    $.ajax(options);
-//});
-
-//background img
 (() => {
     'use strict';
     // Page is loaded
@@ -144,23 +123,6 @@ $(document).ready(function () {
     var css = "url('" + pageURL + "images/car.svg')";
     $("#Car").css("background-image", css);
 
-    //var urlHash = window.location.href.split("#")[1];
-    //if (urlHash != undefined) {
-    //    if (urlHash.length > 0) {
-    //        var offset = 120;
-    //        if (urlHash == "Kontakt") {
-    //            offset = 200;
-    //        }
-    //        $('html,body').animate({
-    //            scrollTop: $($('#' + urlHash)).offset().top - offset
-    //        }, 400, 'swing', 'slow', function () {
-
-    //            // Add hash (#) to URL when done scrolling (default click behavior)
-    //            window.location.hash = $(hash).offset().top - 120;
-    //        });
-    //    }
-    //}
-
     $('#navCollapse>li>a').on('click', function () {
         $('.navbar-collapse').collapse('hide');
     });
@@ -207,28 +169,6 @@ $(document).ready(function () {
             }
         }
     });
-
-
-
-    //$('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-    //    if (window.screen.width < 999 || document.body.clientWidth < 999) {
-    //        if (!$(this).next().hasClass('show')) {
-    //            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
-    //        }
-    //        var $subMenu = $(this).next('.dropdown-menu');
-    //        $subMenu.toggleClass('show');
-
-
-    //        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-    //            $('.dropdown-submenu .show').removeClass('show');
-    //        });
-
-    //    }
-
-
-    //    return false;
-    //});
-
 });
 
 //spysrcroll function
@@ -329,14 +269,6 @@ function attachMessage(marker, Message) {
         infowindow.open(marker.get('map'), marker);
     });
 }
-
-//function checkProperties(obj) {
-//    for (var key in obj) {
-//        if (obj[key] !== null && obj[key] != "")
-//            return false;
-//    }
-//    return true;
-//}
 
 function Send() {
 
