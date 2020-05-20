@@ -1,6 +1,9 @@
 # PipsiI
 Projektowanie i programowanie systemów internetowych I
 
+Aplikacja umożliwiająca prezentację produktu, kontakt z dystrybutorem, udostępnienie szczegółowych informacji dla klienta.
+Od strony właścicela(administratora) umożliwiająca dodawanie nowych produktów, edytowanie produktów, treści informacji na stronie (CMS)
+
 
 | Zagadnienie  | Implementacja | Opis |
 | ------------- | ------------- | ------------- |
