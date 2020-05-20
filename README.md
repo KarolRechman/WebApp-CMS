@@ -21,5 +21,6 @@ Projektowanie i programowanie systemów internetowych I
 | RWD  | Jest  |
 | Logger  | Brak  | Możliwe dodanie
 | Cache  | Jest  |Sesia po stronie servera
-| Sys. Zarządzania zależ.  | Jest  |
-| Mail  | Jest  |
+| Sys. Zarządzania zależ.  | Jest  |w pliku Cit-eTrike.csproj
+| Automatyzacja  | Jest  |Minifikowanie plików js
+| SEO  | Jest  |Plik Robots, aplikacja jest również optymalizowana za pomocą różnych audytów np. Lighthouse z google chrom i innymi aplik. internetowymi
