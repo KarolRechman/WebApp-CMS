@@ -146,31 +146,6 @@ $(document).ready(function () {
         $('#SendModal').modal('show');
 
     });
-    //var name = "";
-    //$("#name").keyup(function (e) {
-    //    var input = "";
-    //    var letter = "";
-    //    var KeyCodes =[48,49,50,51,52,53,54,55,56,57]
-    //    if (e.code == "ShiftRight" || e.code == "ShiftLeft" || e.keyCode == 17 || e.keyCode == 18) {
-    //        name = $(this).val();
-    //        $('#message').val(txtMsg + name);
-    //        e.preventDefault();
-    //    } else if (e.keyCode == 8 && $("#name").val() !="") {
-    //        $('#message').val($('#message').val().substring(0,$('#message').val().length-1));
-    //    }
-    //    else {
-    //        if ($(this).val() == "") {
-    //            $("#message").val(txtMsg);
-    //        } else {
-    //            letter = $(this).val().substring($(this).val().length - 1);
-
-    //        }
-    //    }
-    //    $('#message').val($('#message').val() + letter);
-    //});
-
-
-
     $('[data-id="ColorPicker"]').click(function () {
         $(".badge").each(function (i) {
             CheckColor(this);
@@ -233,33 +208,10 @@ $(document).ready(function () {
     });
 });
 
-
-//$('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-//    if (window.screen.width < 999 || document.body.clientWidth < 999) {
-//        if (!$(this).next().hasClass('SubMClick')) {
-//            $(this).parents('.dropdown-menu').first().find('.SubMClick').removeClass('SubMClick');
-//        }
-//        var $subMenu = $(this).next('.dropdown-menu');
-//        $subMenu.toggleClass('SubMClick');
-
-
-//        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-//            $('.dropdown-submenu .SubMClick').removeClass('SubMClick');
-//        });
-
-//    }
-
-
-//    return false;
-//});
-
-
 MinView();
 $(window).resize(function () {
     MinView();
 });
-
-
 
 $(".thumbs").click(function () {
 
@@ -302,11 +254,6 @@ Number.prototype.format = function (n, x, s, c) {
 
 function ShowChargers(group) {
     ChargerValue = "0";
-    //if (group == undefined) {
-    //    $('#ChargerPicker').selectpicker('show');
-    //    $("#ChargerSelect").show();
-    //}
-    //var bv = $('#BattPicker').selectpicker('val');
     if ($('#BattPicker').selectpicker('val') == 0 || $('#BattPicker').selectpicker('val') == null) {
         $('#ChargerPicker').selectpicker('deselectAll');
         $('#ChargerPicker').selectpicker('val', 'default');
@@ -376,7 +323,6 @@ function ShowResult() {
 
         $("#ConfiqResult").slideDown("slow");
         ChangeBGSize()
-        //$("#Confiq").addClass("bgSizeP");
     } else {
         return;
     }
