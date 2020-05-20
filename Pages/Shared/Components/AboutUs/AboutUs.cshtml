@@ -1,0 +1,135 @@
+﻿@model List<Cit_eTrike.Models.TxtContent>
+
+@functions{
+
+    public string MixContent(List<Cit_eTrike.Models.TxtContent> txtContents)
+    {
+        var videos = txtContents.Where(m => m.HTMLDecoration == "video");
+        var txt = txtContents.Where(m => m.HTMLDecoration != "video");
+        string HTML = "";
+
+        for (var i = 0; i < txtContents.Count; i++)
+        {
+            if (videos.Count() != 0 || txt.Count() != 0)
+            {
+                if (i % 2 == 0)
+                {
+                    HTML += "<div class='row mb-5 d-flex align-items-center justify-content-center wow fadeIn'>";
+
+                    if (txt.Count() != 0)
+                    {
+                        HTML += "<div class='row col-lg-7 col-md-12 txtContent'><div class='col-1 mr-3'>" + @txt.First().HTMLDecoration + "</div><div class='col-10'><h5 class='feature-title'>" + @txt.First().TextTitle + "</h5>";
+                        HTML += "<p class='text-gray-dark'>" + @txt.First().Text + "</p></div></div>";
+                        txt = txt.Skip(1);
+                    }
+
+                    if (videos.Count() != 0)
+                    {
+                        HTML += "<div class='col-lg-5 col-md-12'><p class='h5 text-center mb-4'>" + @videos.First().TextTitle + "</p>";
+                        HTML += "<video class='embed-responsive embed-responsive-16by9' controls><source class='embed-responsive-item' src='";
+                        if (@videos.First().Text.Contains("http"))
+                        {
+                            HTML += @videos.First().Text + "'type='video/mp4' allowfullscreen ></source></video></div>";
+                        }
+                        else
+                        {
+                            HTML += Context.Request.PathBase.ToString() + @videos.First().Text + "'type='video/mp4' allowfullscreen></source></video></div>";
+                        }
+                        videos = videos.Skip(1);
+                    }
+
+                    HTML += "</div>";
+                }
+                else
+                {
+                    HTML += "<div class='row mb-5 d-flex align-items-center justify-content-center wow fadeIn'>";
+
+                    if (videos.Count() != 0)
+                    {
+                        HTML += "<div class='col-lg-5 col-md-12'><p class='h5 text-center mb-4'>" + @videos.First().TextTitle + "</p><div class='embed-responsive embed-responsive-16by9'>";
+                        HTML += "<iframe class='embed-responsive-item' src='";
+                        if (@videos.First().Text.Contains("http"))
+                        {
+                            HTML += @videos.First().Text + "' allowfullscreen controls='controls'></iframe></div></div>";
+                        }
+                        else
+                        {
+                            HTML += Context.Request.PathBase.ToString() + @videos.First().Text + "' allowfullscreen></iframe></div></div>";
+                        }
+                        videos = videos.Skip(1);
+                    }
+
+                    if (txt.Count() != 0)
+                    {
+                        HTML += "<div class='row col-lg-7 col-md-12 txtContent'><div class='col-1 mr-3'>" + @txt.First().HTMLDecoration + "</div><div class='col-10'><h5 class='feature-title'>" + @txt.First().TextTitle + "</h5>";
+                        HTML += "<p class='text-gray-dark'>" + @txt.First().Text + "</p></div></div>";
+                        txt = txt.Skip(1);
+                    }
+
+                    HTML += "</div>";
+                }
+
+                if (videos.Count() == 0 && txt.Count() == 0)
+                {
+                    i = txtContents.Count();
+                }
+            }
+        }
+
+        return HTML;
+    }
+}
+<section id="uber_uns" class="scrollspy wow fadeIn">
+    <h2 class="h2 font-weight-bold text-center mb-5">Über uns</h2>
+
+    @{
+        string h = MixContent(Model);
+    }
+    @Html.Raw(h)
+  
+    @*
+        <div class="row mb-5 d-flex align-items-center wow fadeIn">
+            <div class="row col-lg-7 col-md-12">
+                <div class="col-1 mr-3">
+                    <i class="fas fa-book fa-2x blue-text"></i>
+                </div>
+                <div class="col-10">
+                    <h5 class="feature-title">Cit-eTrike</h5>
+                    <p class="text-gray-dark">
+                        Cit-eTrike wurde gegründet, um Die umweltfreundliche Alternative für den Innenstädtischen und Kommunalen Verkehr zu bieten. Durch die robuste Bauweise, Stahlrahmen und die Stahlkarosserie sind unsere Fahrzeuge sehr belastbar und vielseitig einsetzbar.
+                        Die elektrischen Motoren gewährleisten eine hohe Zuladung bei niedrigem Energieverbrauch und kompaktem Design. Das minimalistische Design mit dem Verzicht auf viel "schnick schnack" führt dazu das Cit-eTrikes zugänglich für jeden, ideal in Gewerbeapplikationen und rohstoffschonend sind.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <p class="h5 text-center mb-4">Minghong SEV S2</p>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="~/Videos/1NoSound.mp4" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5 d-flex align-items-center justify-content-end wow fadeIn">
+            <div class="col-lg-5 col-md-12">
+                <p class="h5 text-center mb-4">Minghong eTrikes</p>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ewf1TDQNrlk" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="row col-lg-7 col-md-12">
+                <div class="col-1 mr-3">
+                    <i class="fas fa-question-circle fa-2x cyan-text"></i>
+                    <!-- <i class="fas fa-graduation-cap fa-2x cyan-text"></i> -->
+                </div>
+                <div class="col-10">
+                    <h5 class="feature-title">Warum Cit-eTrike?</h5>
+                    <p class="text-gray-dark">
+                        Cit-eTrike fährt durch den elektrischen Antrieb emissionsfrei und ohne lärm zu verursachen. Die ressourcensparende Herstellung und das funktionelle Design schonen die Umwelt. Durch das funktionale und platzsparende Design passen Cit-eTrikes in jede Parklücke und behalten dabei die vielseitige Nutzbarkeit eines traditionellen Fahrzeugs.
+                        Der lästige Umweg zur Tankstelle gehört der Vergangenheit an. Nie wieder leerer Tank da Sie den Cit-eTrike Zuhause über Nacht laden.
+                        Cit-eTrikes sind leicht bedienbar und ab dem 16. Lebensjahr fahrbar mit dem AM Führerschein.
+                    </p>
+                </div>
+            </div>
+        </div>
+    *@
+</section>

@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    string domainName = HttpContext.Request.PathBase.Value.ToString();
+
+}
+
+<!-- Full Page Intro -->
+<div class="view asyncImage" data-src="@domainName/images/background.webp" id="bgImg">
+    <!--     <div class="view " style="background-image: url('background.webp'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;background-position: center center;">
+    -->
+    <!-- Mask & flexbox options-->
+    <div class="mask d-flex justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.40)">
+        <!-- Content -->
+        @await Component.InvokeAsync("AboutUs", 1)
+    </div>
+    <!-- Mask & flexbox options-->
+</div>
+<!-- Full Page Intro -->
+<!--Main layout-->
+<main>
+    <div class="container">
+        <!--Section: Carousel-->
+        @await Component.InvokeAsync("Carousel")
+        <!--Section: Carousel-->
+        <hr class="my-5">
+        <!--Section:uber_uns-->     
+        @await Component.InvokeAsync("AboutUs", 2)
+        <hr class="my-5">
+        <section id="Service" class="scrollspy wow fadeIn">
+            <h2 class="font-weight-bold h2 text-center mb-3">Händler & Service</h2>
+            <div class="container my-4 px-0 z-depth-2">
+                <!--Section: Content-->
+                <section class="text-center white-text d-md-flex justify-content-between p-2" id="Servicepartner">
+                    <h4 class="font-weight-bold font-italic mb-md-0 m-1 p-2">Möchten Sie Händler oder Servicepartner werden ?</h4>
+                    <a href="#Kontakt" class="btn btn-outline-white smooth_Link font-weight-bold">Klicken Sie hier !&nbsp;&nbsp;<i class="fas fa-pen-nib"></i></a>
+                </section>
+                <!--Section: Content-->
+            </div>
+            <div id="googleMap" class="z-depth-1-half map-container">
+            </div>
+            <div id="legend" class="card">
+                <h6 class="font-weight-bold">Legend</h6>
+            </div>
+            @await Component.InvokeAsync("Services")
+        </section>
+        <!--Section: Main features & Quick Start-->
+        <hr class="my-5">
+        <!--Section: Contact v.2-->
+        @await Component.InvokeAsync("AboutUs", 4)
+    </div>
+</main>
+

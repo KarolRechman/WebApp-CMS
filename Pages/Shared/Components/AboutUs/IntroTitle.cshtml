@@ -1,0 +1,57 @@
+﻿@model List<Cit_eTrike.Models.TxtContent>
+
+
+<div class="text-center white-text mx-5 wow fadeIn ">
+
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        if (Model[i].TextTitle == "Intro title")
+        {
+            <h1 class="mb-4 font-weight-bold title h1 my-4">
+                <strong>
+                    @Html.Raw(@Model[i].Text)
+                </strong>
+            </h1>
+        }
+        else if (Model[i].TextTitle == "Intro h2")
+        {
+            <h2 class=" mb-4 font-weight-bold">
+                <strong>@Model[i].Text</strong>
+            </h2>
+        }
+        else if (Model[i].TextTitle == "Intro h3")
+        {
+            <h3 class="mb-4 d-none d-md-block font-weight-bold">
+                <strong>@Model[i].Text</strong>
+            </h3>
+        }
+        else
+        {
+            string header = Model[i].TextTitle.Substring(Model[i].TextTitle.LastIndexOf("h"));
+            string HTML = "<" + header + " class='mb-4 font-weight-bold'>";
+            HTML += "<strong>" + Model[i].Text + "</strong></" + header + ">";
+            @Html.Raw(HTML);
+        }
+    }
+
+    <a href="#Products" id="White_Button" class="btn btn-outline-white btn-lg font-weight-bold smooth_Link pr-lg-5" style="font-size: 4.6vw !important;transition: 0.4s ease !important;">
+        <i class="fas fa-charging-station" id="charging_station"></i>&nbsp; <span class="text-lowercase">e</span>Trikes &nbsp;<i id="Car"></i><span id="span_Car" class="pr-5"></span>
+    </a>
+</div>
+
+@*<h1 class="mb-4 font-weight-bold title h1 my-4">
+            <strong>
+                Cit-eTrike<br>
+                das Elektro - Lastendreirad
+            </strong>
+        </h1>
+        <h2 class=" mb-4 font-weight-bold">
+            <strong>Die Lösung für den innerstädtischen Lastentransport</strong>
+        </h2>
+        <h3 class="mb-4 d-none d-md-block font-weight-bold">
+            <strong>Made in Germany</strong>
+        </h3>
+        <a href="#Products" id="White_Button" class="btn btn-outline-white btn-lg font-weight-bold smooth_Link pr-lg-5" style="font-size: 4.6vw !important;transition: 0.4s ease !important;">
+            <i class="fas fa-charging-station" id="charging_station"></i>&nbsp; <span class="text-lowercase">e</span>Trikes &nbsp;<i id="Car"></i><span id="span_Car" class="pr-5"></span>
+        </a>
+    </div>*@

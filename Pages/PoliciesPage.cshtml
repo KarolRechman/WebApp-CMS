@@ -1,0 +1,10 @@
+﻿@page
+@model Cit_eTrike.Pages.PoliciesPageModel
+@{
+    ViewData["Title"] = "PoliciesPage";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <div class="container my-5 py-5">
+        @Html.Raw(Model.eTrikeCategory.CategoryName)
+    </div>

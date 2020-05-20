@@ -1,0 +1,66 @@
+﻿@page
+@model Cit_eTrike.Pages.CategoryPageModel
+@{
+    ViewData["Title"] = "CategoryPage";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>CategoryPage</h1>
+<div class="container mt-5">
+
+    <!--Section: Content-->
+    <section class="text-dark text-center mt-1">
+
+        <!-- Section heading -->
+        <h2 class="font-weight-bold mt-5 py-3">@ViewData["CategoryName"]</h2>
+        <hr class="my-4 w-50">
+        <!-- Section description -->
+        <p class="dark-grey-text w-responsive mx-auto mb-5">@ViewData["CategoryDesc"]</p>
+
+        <!-- Grid row -->
+        <div class="row mb-3 d-flex justify-content-center">
+            @foreach (var et in Model.eTrikes)
+            {
+                <!-- Grid column -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <!-- Card -->
+                    <div class="card card-cascade wider card-ecommerce">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img data-src="@Html.DisplayFor(modelItem => et.ImgSrc)" class="card-img-top" alt="eTrike">
+                            <a asp-page="ProductPage" asp-route-id="@et.IDeTrike">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card image -->
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center pb-0">
+                            <!-- Title -->
+                            <h5 class="card-title">
+                                <strong class="green-text">
+                                    @Html.DisplayFor(modelItem => et.Name)
+                                </strong>
+                            </h5>
+                            <!-- Description -->
+                            <p class="card-text">
+                                @Html.Raw(@et.PresentationTxt)
+                                <span class="blue-text font-weight-bold"> @Html.DisplayFor(modelItem => et.Price)</span> @Html.DisplayFor(modelItem => et.TaxTxt)
+                            </p>
+                            <!-- Card footer -->
+                            <div class="card-footer mt-4">
+
+                                <a asp-page="ProductPage" asp-route-id="@et.IDeTrike" id="CPButton" class="btn btn-outline-dark waves-effect btn-lg mx-auto font-weight-bold" data-toggle="tooltip" data-placement="top" title="Daten">
+                                    <i class="fas fa-eye"></i>&nbsp; Daten
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card content -->
+                    </div>
+                    <!-- Card -->
+                </div>
+                <!-- Grid column -->
+            }
+        </div>
+    </section>
+</div>
+

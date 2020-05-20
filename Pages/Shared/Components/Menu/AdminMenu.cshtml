@@ -1,0 +1,38 @@
+﻿@model Cit_eTrike.Models.Menu
+@using Microsoft.AspNetCore.Http;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="sidebar-wrapper">
+    <ul class="nav">
+        @{
+            string active = "active";
+        }
+        @foreach (var link in Model.Links)
+        {
+            if (Model.PageRoute == @link.HTMLidName)
+            {
+                active = "active";
+            }
+            else
+            {
+                active = "";
+            }
+            <li class="nav-item @active  ">
+                <a class="nav-link" asp-page="@link.HTMLidName">
+                    @Html.Raw(@link.Icon)
+                    @if (@link.Name == "eTrikes")
+                    {
+                        <p class="ml-5">@link.Name</p>
+                    }
+                    else
+                    {
+                        <p>@link.Name</p>
+                    }
+
+                </a>
+            </li>
+        }
+    </ul>
+</div>

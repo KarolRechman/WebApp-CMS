@@ -1,0 +1,229 @@
+﻿@page
+@model Cit_eTrike.AddeTrikeModel
+@{
+
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+
+    var Batteries = new List<Cit_eTrike.Models.eTrikeBattery>();
+    var Colors = new List<Cit_eTrike.Models.eTrikeColor>();
+    var Chargers = new List<Cit_eTrike.Models.eTrikeBattery>();
+    var Types = new List<Cit_eTrike.Models.eTrikeType>();
+    var value = "";
+}
+
+<div class="w-50 text-dark mb-2">
+    <h2 class="font-weight-bold ">eTrike hinzufügen</h2>
+    <h2 class="result text-danger"></h2>
+    <hr class="hrBlack" />
+</div>
+
+<section class="container-fluid">
+    <form id="add-form" name="add-form" method="POST" onsubmit="return false">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <label><strong class="text-dark">Kategorie</strong></label>
+                <select class="selectpicker show-tick" id="CatPicker" data-width="100%" title="Bitte wählen Sie ein Kategorie..." data-size="@Model.categories.Count">
+                    @foreach (var cat in Model.categories)
+                    {
+                        if (cat.CategoryName.Contains(ViewData["category"].ToString()))
+                        {
+                            <option selected value="@cat.CategoryName" name="@cat.IdCategory">@cat.CategoryName</option>
+                        }
+                        else
+                        {
+                            <option value="@cat.CategoryName" name="@cat.IdCategory.">@cat.CategoryName</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            @foreach (KeyValuePair<string, object> kvp in Model.eTrikeDesc)
+            {
+                if (kvp.Key != "Category" && kvp.Key != "Batteries" && kvp.Key != "Colors" && kvp.Key != "Chargers" && kvp.Key != "ImagesPath" && kvp.Key != "IDeTrike" && kvp.Key != "Types"
+                    && kvp.Key != "Typ")
+                {
+                    <div class="col-lg-6 col-sm-12">
+                        @if (kvp.Key != "Verfügbar")
+                        {
+                            <div class="form-group p-3 my-3 TxtBlack">
+                                <label for="@kvp.Key">@kvp.Key</label>
+                                @if (ViewData["Title"].ToString() == "Edit eTrike")
+                                {
+                                    value = "value=\"" + @kvp.Value.ToString() + "\"";
+                                }
+
+                                @if (kvp.Key == "Beschreibung")
+                                {
+                                    <textarea id="@kvp.Key" class="form-control" rows="3" placeholder="Erforderliche Format: --> @kvp.Value">@value.Replace("value=","").Replace("\"","")</textarea>
+                                }
+                                else if (kvp.Key == "Preis" || kvp.Key == "Gewicht" || kvp.Key == "Zuladung" || kvp.Key == "Sitze")
+                                {
+                                    @if (ViewData["Title"].ToString() == "Edit eTrike")
+                                    {
+                                        string valueString = kvp.Value.ToString() + " ";//only 4 seats !!
+                                        value = "value=\"" + Convert.ToDouble(@kvp.Value.ToString().Substring(0, valueString.IndexOf(" "))) + "\"";
+
+                                        if (kvp.Key == "Preis")
+                                        {
+                                            value = "value=\"" + @kvp.Value.ToString().Substring(0, @kvp.Value.ToString().IndexOf(" ")).Replace(",", ".") + "\"";
+                                        }
+                                    }
+
+                                    <input type="number" class="form-control" id="@kvp.Key" placeholder="Erforderliche Format: --> @value.Replace("value=\"","").Replace("\"","")" pattern="[0-9]" @Html.Raw(@value.Replace(",", ".")) step="0.01">
+                                }
+                                else if (kvp.Key == "Name")
+                                {
+                                    <input type="text" class="form-control" id="@kvp.Key.Replace(" ","")" placeholder="Erforderliche Format: --> @kvp.Value" required @Html.Raw(@value)>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="@kvp.Key.Replace(" ","")" placeholder="Erforderliche Format: --> @kvp.Value" @Html.Raw(@value)>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check p-3 my-3 TxtBlack">
+                                <label class="form-check-label">
+                                    @kvp.Key
+                                    <input class="form-check-input" type="checkbox" id="@kvp.Key">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </div>
+        <div class="row mt-1">
+            <div class="col-lg-6 col-sm-12">
+                <label class="text-dark"><strong>Farbe</strong></label>
+                <select class="selectpicker show-tick" id="ColorPicker" data-width="100%" title="Bitte wählen Sie Ihre Farbe..." data-size="@Model.eTrikeDesc.Colors.Count" multiple data-actions-box="true">
+                    @if (ViewData["Colors"].ToString() != "")
+                    {
+                        Colors = (List<Cit_eTrike.Models.eTrikeColor>)ViewData["Colors"];
+                    }
+
+                    @for (var i = 0; i < @Model.eTrikeDesc.Colors.Count; i++)
+                    {
+                        if (Colors.Count > 0 && Colors.Any(c => c.IdColor == @Model.eTrikeDesc.Colors[i].IdColor) == true)
+                        {
+                            <option selected value="@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())" name="@Model.eTrikeDesc.Colors[i].IdColor" data-content="<span class='badge' style='background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);'>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</span>">@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim()) </option>
+                        }
+                        else
+                        {
+                            <option value="@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())" name="@Model.eTrikeDesc.Colors[i].IdColor" data-content="<span class='badge' style='background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);'>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</span>">@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim()) </option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <label class="text-dark"><strong>Typ</strong></label>
+                <select class="selectpicker show-tick" id="TypePicker" data-width="100%" title="Bitte wählen Sie Typ..." data-size="@Model.eTrikeDesc.Types.Count">
+
+                    @for (var i = 0; i < @Model.eTrikeDesc.Types.Count; i++)
+                    {
+                        Types = ((IEnumerable<Cit_eTrike.Models.eTrikeType>)@Model.eTrikeDesc.Types).ToList();
+                        if (@Model.eTrikeDesc.Typ != "" && Types.Any(t => t.CategoryDescription == @Model.eTrikeDesc.Typ) == true)
+                        {
+                            <option value="@Model.eTrikeDesc.Types[i].IdCategory" id="Charger_@Model.eTrikeDesc.Types[i].IdCategory" name="@Model.eTrikeDesc.Types[i].IdCategory"
+                                    title="@Model.eTrikeDesc.Types[i].CategoryName" data-subtext="@Model.eTrikeDesc.Types[i].CategoryDescription" selected>
+                                @Model.eTrikeDesc.Types[i].CategoryName
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="@Model.eTrikeDesc.Types[i].IdCategory" id="Charger_@Model.eTrikeDesc.Types[i].IdCategory" name="@Model.eTrikeDesc.Types[i].IdCategory"
+                                    title="@Model.eTrikeDesc.Types[i].CategoryName" data-subtext="@Model.eTrikeDesc.Types[i].CategoryDescription">
+                                @Model.eTrikeDesc.Types[i].CategoryName
+                            </option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-lg-6 col-sm-12">
+                <label class="text-dark"><strong>Batterie</strong></label>
+                <select class="selectpicker show-tick" id="BattPicker" data-width="100%" title="Bitte wählen Sie Ihre Batterie..." data-size="@Model.eTrikeDesc.Batteries.Count+2" multiple data-actions-box="true">
+
+                    @{ if (ViewData["Batteries"].ToString() != "")
+                        {
+                            Batteries = (List<Cit_eTrike.Models.eTrikeBattery>)ViewData["Batteries"];
+                        }
+
+                        var Blei = ((IEnumerable<dynamic>)@Model.eTrikeDesc.Batteries).Cast<dynamic>().Where(m => m.Name.Contains("Blei") == true).ToList();
+                        var Lithium = ((IEnumerable<dynamic>)@Model.eTrikeDesc.Batteries).Cast<dynamic>().Where(m => m.Name.Contains("Lithium") == true).ToList();
+                    }
+                    <optgroup label="@Blei[0].Name.Trim()">
+                        @for (var i = 0; i < Blei.Count; i++)
+                        {
+                            double batteryPrice = Convert.ToDouble(@Blei[i].Price);
+
+                            if (Batteries.Count > 0 && Batteries.Any(b => b.IdBattery == Blei[i].IdBattery) == true)
+                            {
+                                <option value="@batteryPrice" name="@Blei[i].IdBattery" data-subtext="@batteryPrice" selected>@Blei[i].Power </option>
+                            }
+                            else
+                            {
+                                <option value="@batteryPrice" name="@Blei[i].IdBattery" data-subtext="@batteryPrice">@Blei[i].Power </option>
+                            }
+                        }
+                    </optgroup>
+                    <optgroup label="@Lithium[0].Name.Trim()">
+                        @for (var i = 0; i < Lithium.Count; i++)
+                        {
+                            double batteryPrice = Convert.ToDouble(@Lithium[i].Price);
+
+                            if (Batteries.Count > 0 && Batteries.Any(b => b.IdBattery == Lithium[i].IdBattery) == true)
+                            {
+                                <option value="@batteryPrice" name="@Lithium[i].IdBattery" data-subtext="@batteryPrice" selected>@Lithium[i].Power </option>
+                            }
+                            else
+                            {
+                                <option value="@batteryPrice" name="@Lithium[i].IdBattery" data-subtext="@batteryPrice">@Lithium[i].Power </option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-lg-6 col-sm-12" id="ChargerSelect" style="display:none;">
+                <label class="text-dark"><strong>Ladegerät</strong></label>
+                <select class="selectpicker show-tick" id="ChargerPicker" data-width="100%" title="Bitte wählen Sie Ihre Ladegerät..." data-size="@Model.eTrikeDesc.Chargers.Count" multiple data-actions-box="true">
+
+                    @if (ViewData["Chargers"].ToString() != "")
+                    {
+                        Chargers = (List<Cit_eTrike.Models.eTrikeBattery>)ViewData["Chargers"];
+                    }
+
+                    @for (var i = 0; i < @Model.eTrikeDesc.Chargers.Count; i++)
+                    {
+                        double ChargerPrice = Convert.ToDouble(@Model.eTrikeDesc.Chargers[i].Price);
+
+                        if (Chargers.Count > 0 && Chargers.Any(c => c.IdBattery == @Model.eTrikeDesc.Chargers[i].IdBattery) == true)
+                        {
+                            <option value="@ChargerPrice" id="Charger_@Model.eTrikeDesc.Chargers[i].IdBattery" name="@Model.eTrikeDesc.Chargers[i].IdBattery" title="@Model.eTrikeDesc.Chargers[i].Power @Html.Raw(@Model.eTrikeDesc.Chargers[i].Name.Trim())" data-subtext="@ChargerPrice" selected>@Model.eTrikeDesc.Chargers[i].Power </option>
+                        }
+                        else
+                        {
+                            <option value="@ChargerPrice" id="Charger_@Model.eTrikeDesc.Chargers[i].IdBattery" name="@Model.eTrikeDesc.Chargers[i].IdBattery" title="@Model.eTrikeDesc.Chargers[i].Power @Html.Raw(@Model.eTrikeDesc.Chargers[i].Name.Trim())" data-subtext="@ChargerPrice">@Model.eTrikeDesc.Chargers[i].Power </option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="p-4">
+            @if (ViewData["Title"].ToString() == "Edit eTrike")
+            {
+                <input type="submit" class="btn btn-primary float-right" id="UpdateTrike" value="aktualisieren">
+            }
+            else
+            {
+                <input type="submit" class="btn btn-success float-right" id="AddeTrike" value="hinzufügen">
+            }
+        </div>
+    </form>
+</section>

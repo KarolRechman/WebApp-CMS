@@ -1,0 +1,472 @@
+﻿@page
+
+@model Cit_eTrike.Pages.ProductPageModel
+@{
+    ViewData["Title"] = "ProductPage";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    double price = 0;
+    string CurrencySign = "";
+
+    String pageRoute = ViewContext.RouteData.Values["page"].ToString();
+
+}
+
+<div class="container-fluid my-5 px-5 pt-5 d-flex justify-content-center" id="con1">
+    <!--Section: Content-->
+    <section class="text-center">
+
+        <!-- Section heading -->
+        <h2 class="font-weight-bold mb-5 mt-2">Produktdetails</h2>
+        <hr class="my-5 w-50">
+
+        <div class="row w-100 m-0" id="1Section">
+            <div class="col-lg-7 col-md-12" id="productCarousel">
+                <div class="pl-4 pr-4" id="InnerDivCarousel">
+                    <!--Carousel Wrapper-->
+                    <div id="carousel-thumb1" class="carousel slide pl-5 pr-5" data-ride="carousel">
+                        <!--Slides-->
+                        <div class="card" id="ImgCard">
+                            <div class="carousel-inner text-center text-md-left" role="listbox">
+
+                                @for (var i = 0; i < Model.eTrikeDesc.Img.Count; i++)
+                                {
+                                    string active = "active";
+                                    if (i > 0)
+                                    {
+                                        active = "";
+                                    }
+                                    <div class="carousel-item @active CarouselMid" id="CI_@Model.eTrikeDesc.Img[i].IdImg">
+                                        <img src="@Model.eTrikeDesc.Img[i].Src"
+                                             alt="First slide" class="img-fluid bigImg">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!--/.Slides-->
+                        <!--Thumbnails-->
+                        <a class="carousel-control-prev CaruselCont" href="#carousel-thumb1" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon btn btn-sm" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next CaruselCont" href="#carousel-thumb1" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon btn btn-sm" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <!--/.Thumbnails-->
+
+                    </div>
+                    <!--/.Carousel Wrapper-->
+                </div>
+                <hr class="w-100">
+                <div class="row mt-3" id="ThumbsRow">
+
+                    @for (var i = 0; i < Model.eTrikeDesc.ImgThumbs.Count; i++)
+                    {
+                        int nr = (12 / Model.eTrikeDesc.ImgThumbs.Count);
+                        string column = "col-" + nr.ToString();
+
+                        <figure class="@column d-flex align-content-center justify-content-center">
+                            <img src="@Model.eTrikeDesc.ImgThumbs[i].Src"
+                                 class="img-fluid card thumbs" id="FI_@Model.eTrikeDesc.ImgThumbs[i].IdImg" alt="Thumbnail">
+                        </figure>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-5 text-center text-md-left card p-4 h-auto" id="DescCard">
+                <div class="row">
+                    <div class="col-5">
+                        <h2 class="h2-responsive text-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-md-4 ml-sm-1" id="eName">@Model.eTrikeDesc.Name</h2>
+                    </div>
+                    <div class="col-7">
+                        <h4 class="h4-responsive font-italic text-right font-weight-bold dark-grey-text">@Model.eTrikeDesc.Category</h4>
+                    </div>
+                </div>
+                <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+                    <span class="dark-grey-text font-weight-bold">
+                        <strong id="eTPrice">ab @Model.eTrikeDesc.Preis</strong>
+                    </span>
+                </h3>
+                <div class="font-weight-normal" id="DescProduct">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion " id="accordionEx" role="tablist" aria-multiselectable="true">
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a1');">
+                                        Beschreibung
+                                        <i class="fas fa-angle-down float-right Rotate_Arrow Arrow_Icon Rotate" id="a1"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#accordionEx">
+                                <div class="card-body bg-white">
+                                    <p class="ml-xl-0">@Html.Raw(@Model.eTrikeDesc.Beschreibung)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingTwo2">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                                   aria-expanded="false" aria-controls="collapseTwo2">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a2');">
+                                        Technische Daten
+                                        <i class="fas fa-angle-down rotate-icon float-right Rotate Arrow_Icon" id="a2"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                                 data-parent="#accordionEx">
+                                <div class="card-body bg-white">
+                                    <dl class="row">
+                                        @foreach (KeyValuePair<string, object> kvp in Model.eTrikeDesc)
+                                        {
+                                            if (kvp.Key != "IDeTrike" && kvp.Key != "Name" && kvp.Key != "Category" && kvp.Key != "Price" && kvp.Key != "ImagesPath"
+                                        && kvp.Key != "Batteries" && kvp.Key != "Colors" && kvp.Key != "ImgThumbs" && kvp.Key != "Img" && kvp.Key != "Beschreibung" && kvp.Key != "Chargers")
+                                            {
+                                                <dt class="col-6 DescDetails">
+                                                    <strong>@kvp.Key: </strong>
+                                                </dt>
+                                                <dd class="col-6 DescDetails">
+                                                    <span>@kvp.Value</span>
+                                                </dd>
+                                            }
+                                        }
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingThree3">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                                   aria-expanded="false" aria-controls="collapseThree3">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a3');">
+                                        Erhältliche Farben
+                                        <i class="fas fa-angle-down rotate-icon float-right Rotate Arrow_Icon" id="a3"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseThree3" class="collapse border-bottom" role="tabpanel" aria-labelledby="headingThree3"
+                                 data-parent="#accordionEx">
+                                <div class="card-body p-0 pt-3 pr-lg-4 pr-md-3 pr-sm-0 bg-white">
+                                    <div class="row">
+                                        <div class="col-6 colAv">
+                                            <dl class="row  d-flex align-items-center justify-content-center">
+                                                @{
+                                                    int number = @Model.eTrikeDesc.Colors.Count;
+                                                    number = number / 2;
+                                                }
+                                                @for (var i = 0; i < number; i++)
+                                                {
+                                                    <dt class="col-lg-6 col-sm-6 text-center">
+                                                        <strong>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</strong>
+                                                    </dt>
+                                                    <dd class="col-lg-6 col-sm-6 card p-4 mb-3" style="background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);">         
+                                                    </dd>    
+                                                }
+                                            </dl>
+                                        </div>
+                                        <div class="col-6 colAv">
+                                            <dl class="row  d-flex align-items-center justify-content-center">
+                                                @for (var i = number; i < @Model.eTrikeDesc.Colors.Count; i++)
+                                                {
+
+                                                    <dt class="col-lg-6 col-sm-6 text-center">
+                                                        <strong>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</strong>
+                                                    </dt>
+                                                    <dd class="col-lg-6 col-sm-6 card p-4 mb-3" style="background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);">                                           
+                                                    </dd>                             
+                                                }
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingThree4">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree4"
+                                   aria-expanded="false" aria-controls="collapseThree4">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a4');">
+                                        Erhältliche Batterien
+                                        <i class="fas fa-angle-down rotate-icon float-right Rotate Arrow_Icon" id="a4"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseThree4" class="collapse border-bottom" role="tabpanel" aria-labelledby="headingThree4"
+                                 data-parent="#accordionEx">
+                                <div class="card-body bg-white text-sm-center">
+
+                                    <dl class="row  d-flex align-items-center justify-content-center">
+                                        @{
+                                            // price = Convert.ToDouble(@Model.eTrikeDesc.Price.ToString().Substring(0, @Model.eTrikeDesc.Price.ToString().Length - 2));
+                                            CurrencySign = @Model.eTrikeDesc.Price.ToString().Substring(@Model.eTrikeDesc.Price.ToString().Length - 2, 2);
+                                        }
+                                        @for (var i = 0; i < @Model.eTrikeDesc.Batteries.Count; i++)
+                                        {
+                                            <dt class="col-lg-8 col-sm-10">
+
+                                                @*<strong class="">@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Replace(" ", "<br>"))</strong>*@
+                                                <strong>@Model.eTrikeDesc.Batteries[i].Power<br>@Model.eTrikeDesc.Batteries[i].Name</strong>
+
+                                            </dt>
+                                            double batteryPrice = Convert.ToDouble(@Model.eTrikeDesc.Batteries[i].Price);
+                                            // price = price + batteryPrice;
+                                            <dd class="col-lg-4 col-sm-2">
+
+                                                <strong class="float-lg-left text-sm-center">@batteryPrice @CurrencySign</strong>
+
+                                            </dd>
+                                            if (i != @Model.eTrikeDesc.Batteries.Count - 1)
+                                            {
+                                                <hr class="my-2 w-90" />
+                                            }
+                                        }
+                                    </dl>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingThree5">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree5"
+                                   aria-expanded="false" aria-controls="collapseThree5">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a5');">
+                                        Ladezeiten
+                                        <i class="fas fa-angle-down rotate-icon float-right Rotate Arrow_Icon" id="a5"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseThree5" class="collapse border-bottom" role="tabpanel" aria-labelledby="headingThree5"
+                                 data-parent="#accordionEx">
+                                <img class="img-fluid Fahrleistung" src="~/images/ChargerTable.webp" />                         
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                        <!-- Accordion card -->
+                        <div class=" mb-1">
+                            <!-- Card header -->
+                            <div class="card-header text-center bg-white" role="tab" id="headingThree6">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree6"
+                                   aria-expanded="false" aria-controls="collapseThree6">
+                                    <h5 class="mb-0 text-left green-text font-weight-bold" onclick="Rotate('a6');">
+                                        Fahrleistung
+                                        <i class="fas fa-angle-down rotate-icon float-right Rotate Arrow_Icon" id="a6"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseThree6" class="collapse border-bottom" role="tabpanel" aria-labelledby="headingThree5"
+                                 data-parent="#accordionEx">
+                                <img class="img-fluid Fahrleistung"  src="~/images/Fahrleistung.webp" />                
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container-fluid mb-5 px-4 pb-2 mt-2" id="con2">
+    <!--Section: Content-->
+    <section class="text-center mt-5 p-0">
+        <!-- Section heading -->
+        <h3 class="font-weight-bold black-text">
+            Möchten Sie wissen, wie viel ein <span class="green-text">@Model.eTrikeDesc.Name</span> mit einer Batterie und einem Ladegerät kostet?
+        </h3>
+        <h4 class="font-weight-bold">
+
+            <button class="btn btn-outline-black font-weight-bold PPButton" id="Configurator">Konfigurator &nbsp;<i class="fas fa-cogs"></i></button>
+        </h4>
+        <hr class="my-4 w-50" id="hrConfiq"/>
+        <div class="card p-lg-2 p-md-2 p-sm-0" id="Confiq">
+            <div class="row p-lg-2 p-md-2 p-sm-0">
+                <div class="col-lg-4 col-sm-12 p-lg-5 p-md-4 p-sm-2">
+                    <label><strong>Farbe</strong></label>
+                    <select class="selectpicker show-tick" id="ColorPicker" data-width="100%" title="Bitte wählen Sie Ihre Farbe..." data-size="5">
+                        @for (var i = 0; i < @Model.eTrikeDesc.Colors.Count; i++)
+                        {
+                            if (@Model.eTrikeDesc.Colors[i].IdColor == 8)
+                            {
+                                <option selected value="@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())" name="@Model.eTrikeDesc.Colors[i].IdColor" data-content="<span class='badge' style='background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);'>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</span>">@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim()) </option>
+                            }
+                            else
+                            {
+                                <option value="@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())" name="@Model.eTrikeDesc.Colors[i].IdColor" data-content="<span class='badge' style='background-color:rgb(@Model.eTrikeDesc.Colors[i].RGBCode);'>@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim())</span>">@Html.Raw(@Model.eTrikeDesc.Colors[i].Name.Trim()) </option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-lg-4 col-sm-12 p-lg-5 p-md-4 p-sm-2">
+                    <label class="BattLabel"><strong>Batterie</strong></label>
+                    <select class="selectpicker show-tick" id="BattPicker" data-width="100%" title="Bitte wählen Sie Ihre Batterie..." data-size="8">
+                        <option value="0">Ohne</option>
+                        @{ var Blei = ((IEnumerable<dynamic>)@Model.eTrikeDesc.Batteries).Cast<dynamic>().Where(m => m.Name.Contains("Blei") == true).ToList();
+                            var Lithium = ((IEnumerable<dynamic>)@Model.eTrikeDesc.Batteries).Cast<dynamic>().Where(m => m.Name.Contains("Lithium") == true).ToList();
+
+                        }
+                        <optgroup label="@Blei[0].Name.Trim()">
+                            @for (var i = 0; i < Blei.Count; i++)
+                            {
+                                double batteryPrice = Convert.ToDouble(@Blei[i].Price);
+
+                                <option value="@batteryPrice" name="@Blei[i].IdBattery" data-subtext="@batteryPrice @CurrencySign">@Blei[i].Power </option>
+                            }
+                        </optgroup>
+                        <optgroup label="@Lithium[0].Name.Trim()">
+                            @for (var i = 0; i < Lithium.Count; i++)
+                            {
+                                double batteryPrice = Convert.ToDouble(@Lithium[i].Price);
+
+                                <option value="@batteryPrice" name="@Lithium[i].IdBattery" data-subtext="@batteryPrice @CurrencySign">@Lithium[i].Power </option>
+                            }
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-sm-12 p-lg-5 p-md-4 p-sm-2" id="ChargerSelect">
+                    <label class="BattLabel"><strong>Ladegerät</strong></label>
+                    <select class="selectpicker show-tick" id="ChargerPicker" data-width="100%" title="Bitte wählen Sie Ihre Ladegerät..." data-size="5">
+                        <option value="0">Ohne</option>
+                        @for (var i = 0; i < @Model.eTrikeDesc.Chargers.Count; i++)
+                        {
+                            double ChargerPrice = Convert.ToDouble(@Model.eTrikeDesc.Chargers[i].Price);
+
+                            <option value="@ChargerPrice" id="Charger_@Model.eTrikeDesc.Chargers[i].IdBattery" title="@Model.eTrikeDesc.Chargers[i].Power @Html.Raw(@Model.eTrikeDesc.Chargers[i].Name.Trim())" data-subtext="@ChargerPrice @CurrencySign">@Model.eTrikeDesc.Chargers[i].Power </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row text-center p-2" id="ConfiqResult">
+                <h4 class="py-3"><strong>Ihren @Model.eTrikeDesc.Name</strong>:</h4>
+                <div class="col-12 p-1">
+                    <dl class="row d-flex align-items-center justify-content-center">
+                        <dt class="col-6 text-right p-2 dtCR">
+                            <strong>Farbe:</strong>
+                        </dt>
+                        <dd class="col-6 text-left mb-0 p-2 ddCR">
+                            <span id="ColorVal"></span>
+                        </dd>
+                        <dt class="col-6 text-right p-2 dtCR">
+                            <strong>Batterie:</strong>
+                        </dt>
+                        <dd class="col-6 text-left mb-0 p-2 ddCR">
+                            <span id="BattVal"></span>
+                        </dd>
+                        <dt class="col-6 text-right p-2 dtCR">
+                            <strong>Ladegeräte:</strong>
+                        </dt>
+                        <dd class="col-6 text-left mb-0 p-2 ddCR">
+                            <span id="ChargerVal"></span>
+                        </dd>
+                        <dt class="col-6 text-right p-2 dtCR">
+                            <strong class="hyphenate">Unverbindliche Verkaufspreisempfehlung:</strong>
+                        </dt>
+                        <dd class="col-6 text-left mb-0 p-2 ddCR">
+                            <span id="PreisVal"></span>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="row d-flex align-items-end justify-content-center h-100 p-1 m-0" id="2Buttons">
+                    <!--Grid column-->
+                    <div class="col-lg-6 col-sm-12">
+                        <form id="Locform" name="Locform" method="POST" onsubmit="return false">
+                            <div class="md-form w-50 m-auto">
+                                <input type="number" id="PostCode" name="PostCode" class="form-control" min="0" max="99999" pattern="[0-9]{5}" required>
+                                <label for="PostCode" class="text-dark">Dein Postleitzahl</label>
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark waves-effect btn-lg mx-auto font-weight-bold PPButton" id="PCGeoLoc">
+                                <i class="fas fa-store-alt"></i>&nbsp; Dein händler in der Nähe
+                            </button>
+                        </form>
+                    </div>
+                    <!--Grid column-->
+                    <a class="btn btn-outline-dark waves-effect btn-lg mx-auto font-weight-bold PPButton" id="SendQuestion">
+                        <i class="fas fa-question-circle"></i>&nbsp; Online Anfrage
+                    </a>
+                </div>
+            </div>          
+        </div>     
+    </section>
+    <!--Section: Content-->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalPreview" tabindex="-1" role="dialog" aria-labelledby="ModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fluid modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading font-weight-bold" id="ModalPreviewLabel">@Model.eTrikeDesc.Name</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Carousel Wrapper-->
+                <div id="carousel-example-1z" class="carousel slide" data-ride="carousel">
+                    <!--Indicators-->
+                    <ol class="carousel-indicators" id="CarouselIndicators">
+                    </ol>
+                    <!--/.Indicators-->
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox" id="CarouselInner">
+                    </div>
+                    <!--/.Slides-->
+                    <!--Controls-->
+                    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon btn btn-sm" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon btn btn-sm" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--/.Controls-->
+                </div>
+                <!--/.Carousel Wrapper-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="SendModal" tabindex="-1" role="dialog" aria-labelledby="ModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-notify modal-success" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading font-weight-bold" id="ModalPreviewLabel">@Model.eTrikeDesc.Name</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @await Component.InvokeAsync("AboutUs", 4)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
