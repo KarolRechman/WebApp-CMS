@@ -1,0 +1,19 @@
+[
+  {
+    "outputFileName": "wwwroot/css/Layout.min.css",
+    "inputFiles": [
+      "wwwroot/css/Layout.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Layout.min.js",
+    "inputFiles": [
+      "wwwroot/js/Layout.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
