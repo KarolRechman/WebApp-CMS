@@ -9,7 +9,7 @@ Projektowanie i programowanie systemów internetowych I
 | Formularze  | Jest  |
 | Baza danych  | Jest  |
 | Router  | Jest  |
-| Uwierzytelnienie  | Jest  |
+| Uwierzytelnienie  | Jest  |Za pomocą Cookies
 | MVC  | Jest  |Hybrydowe, MVVM z API controllerem(MVC)
 | CRUD  | Jest  |
 | ORM  | Jest  |ADO.NET Własne mapowanie modeli
@@ -20,7 +20,7 @@ Projektowanie i programowanie systemów internetowych I
 | Lokalizacja  | Brak  |Możliwe dodanie
 | RWD  | Jest  |
 | Logger  | Brak  | Możliwe dodanie
-| Cache  | Jest  |Sesia po stronie servera
+| Cache  | Jest  |Sesia po stronie servera, cookies
 | Sys. Zarządzania zależ.  | Jest  |w pliku Cit-eTrike.csproj
 | Automatyzacja  | Jest  |Minifikowanie plików js
 | SEO  | Jest  |Plik Robots, aplikacja jest również optymalizowana za pomocą różnych audytów np. Lighthouse z google chrom i innymi aplik. internetowymi
