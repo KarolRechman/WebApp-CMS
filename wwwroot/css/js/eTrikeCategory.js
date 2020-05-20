@@ -26,24 +26,3 @@ images.forEach(image => {
     imgObserver.observe(image);
 });
 
-$(document).ready(function () {
-
-    //$('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-    //    if (window.screen.width < 999 || document.body.clientWidth < 999) {
-    //        if (!$(this).next().hasClass('SubMClick')) {
-    //            $(this).parents('.dropdown-menu').first().find('.SubMClick').removeClass('SubMClick');
-    //        }
-    //        var $subMenu = $(this).next('.dropdown-menu');
-    //        $subMenu.toggleClass('SubMClick');
-
-
-    //        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-    //            $('.dropdown-submenu .SubMClick').removeClass('SubMClick');
-    //        });
-
-    //    }
-
-
-    //    return false;
-    //});
-});
