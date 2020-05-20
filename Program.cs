@@ -19,11 +19,6 @@ namespace Cit_eTrike
         {
             CreateHostBuilder(args).Build().Run();
         }
-        //public static void Main(string[] args)
-        //{
-        //    BuildWebHost(args).Run();
-        //}
-
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
