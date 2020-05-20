@@ -1,0 +1,519 @@
+@media (min-width: 800px) and (max-width: 850px) {
+    .view {
+        min-height: 600px;
+    }
+}
+
+.view,
+body,
+html {
+    height: 100%
+}
+
+#Products {
+    min-height: 65vh;
+}
+
+#bgImg {
+    background-image: url('/images/background_2.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #242f3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 30%;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+.card-text {
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    /*min-height: 10vh !important;*/
+    margin-bottom: auto !important;
+    margin-top: auto !important;
+}
+
+.CardPresTxt {
+    min-height: 220px !important;
+    display: flex;
+    align-items: center;
+}
+
+.CardCatHeader {
+    min-height: 70px !important;
+    margin: auto !important;
+}
+
+.alignCenter {
+    padding-top: 20px;
+    align-self: center !important;
+}
+
+.GreenTxt {
+    color: #43a047;
+}
+
+.card-img-top {
+    min-height: 100px !important;
+    min-width: 200px !important;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+
+    25% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+
+    75% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, .2) !important;
+}
+
+.top-nav-collapse {
+    background-color: #388e3c !important;
+}
+
+#Car {
+    /*background-image: url('/images/car.svg');*/
+    height: 52%;
+    width: 52%;
+    color: white;
+    display: initial;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 22%;
+    padding-right: 10% !important;
+    margin-right: 10% !important;
+}
+
+#charging_station {
+    font-size: 100% !important;
+}
+
+#span_Car {
+    padding-right: 5.2vw !important;
+}
+
+#SendButton {
+    transition: 0.4s ease !important;
+}
+
+    #SendButton:hover {
+        background-color: #4285F4 !important;
+        color: white !important;
+        transition: 0.4s ease-in !important;
+    }
+
+#White_Button:hover {
+    background-color: #388e3c !important;
+    color: white !important;
+    transition: 0.4s ease !important;
+    border-color: #388e3c !important;
+}
+
+#Servicepartner {
+    background-image: linear-gradient(to right bottom, #299e2f, #2b9630, #2c8d31, #2d8532, #2e7d32);
+}
+
+[data-src] {
+    min-height: 50px;
+    min-width: 50px;
+}
+
+.card-footer {
+    background-color: white !important;
+}
+
+#googleMap {
+    width: 100% !important;
+    min-height: 75vh !important;
+}
+
+.legend_Span {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#legend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px;
+    margin: 10px;
+    opacity: 0.95;
+}
+
+    #legend h6 {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    #legend img {
+        vertical-align: middle;
+    }
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: black;
+    position: absolute;
+    height: 100px;
+    cursor: pointer;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    cursor: pointer !important;
+    position: absolute !important;
+    width: 60px !important;
+    height: 160px !important;
+    background-color: #4285F4 !important;
+    font-weight: bold !important;
+    font-size: 36px !important;
+    transition: 0.6s ease !important;
+    border-radius: 3px 3px 3px 3px !important;
+    user-select: none !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    cursor: pointer !important;
+    position: absolute !important;
+    width: 60px !important;
+    height: 160px !important;
+    padding: 8px !important;
+    color: black !important;
+    font-weight: bold !important;
+    font-size: 36px !important;
+    transition: 0.6s ease !important;
+    border-radius: 3px 3px 3px 3px !important;
+    user-select: none !important;
+    top: 0.1% !important;
+    opacity: 1 !important;
+}
+
+.carousel-control-prev {
+    left: -40px !important;
+    top: 85px !important;
+}
+
+.carousel-control-next {
+    right: -40px !important;
+    top: 85px !important;
+}
+
+.multi-item-carousel {
+    .carousel-inner
+
+{
+    >.item
+
+{
+    transition: 500ms ease-in-out left;
+}
+
+.active {
+    &.left
+
+{
+    left: -33%;
+}
+
+&.right {
+    left: 33%;
+}
+
+}
+
+.next {
+    left: 33%;
+}
+
+.prev {
+    left: -33%;
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+    > .item {
+        /*// use your favourite prefixer here transition: 500ms ease-in-out left;*/
+        transition: 500ms ease-in-out all;
+        backface-visibility: visible;
+        transform: none !important;
+    }
+}
+
+}
+
+.carouse-control {
+    &.left, &.right
+
+{
+    background-image: none;
+}
+
+}
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* MD */
+@media (min-width: 768px) {
+
+    /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* LG */
+@media (min-width: 991px) {
+
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+
+    /* Show 4th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3%;
+        /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 999px) {
+    .embed-responsive, .txtContent {
+        margin-bottom: 5%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .view {
+        min-height: 600px;
+    }
+
+
+
+    #LMR,
+    #Ming {
+        margin-top: 0 !important;
+    }
+    .col-md-12 {
+        margin-top: 1em;
+    }
+
+    .carousel-control-prev {
+        left: -25px !important;
+        top: 80px !important;
+    }
+
+    .carousel-control-next {
+        right: -25px !important;
+        top: 80px !important;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 42px !important;
+        height: 160px !important;
+        font-size: 36px !important;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 42px !important;
+        height: 160px !important;
+        font-size: 30px !important;
+    }
+
+    #charging_station {
+        font-size: 135% !important;
+    }
+}
