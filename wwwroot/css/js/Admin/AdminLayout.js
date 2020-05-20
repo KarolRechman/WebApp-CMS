@@ -1,21 +1,3 @@
-﻿//import HttpRequest from '../Modules/AjaxModules'
-import { name, draw, HttpRequest } from '../Modules/AjaxModule.js';
-
-let get = new HttpRequest("GET", "WWW");
-get.method;
-get.axios.get('/api/eTrikes').then(function (response) {
-    // handle success
-    console.log(response);
-})
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });
-
-
 var Chargers = $("#ChargerPicker").children();
 var Blei = new Array();
 var Lithium = new Array();
@@ -52,11 +34,6 @@ function GetArray(array, selectId) {
 function ShowChargers(group) {
 
     ChargerValue = "0";
-    //if (group == undefined) {
-    //    $('#ChargerPicker').selectpicker('show');
-    //    $("#ChargerSelect").show();
-    //}
-    //var bv = $('#BattPicker').selectpicker('val');
     if ($('#BattPicker').selectpicker('val') == 0 || $('#BattPicker').selectpicker('val') == null) {
         $('#ChargerPicker').selectpicker('deselectAll');
         $('#ChargerPicker').selectpicker('val', 'default');
@@ -76,7 +53,6 @@ function ShowChargers(group) {
             let a = group.length;
             sessionStorage.setItem('group', group);
         } else {
-            //$(".bs-actionsbox").hide();
             let GroupName = group[0].Name;
             if (sessionGR != GroupName || group == undefined) {
                 $('#ChargerPicker').selectpicker('val', 'default');
@@ -135,7 +111,6 @@ $(document).ready(function () {
                 Name: $(this).attr("label")
             });
         });
-        //var group = opt.parent().attr("label");
 
         ShowChargers(Labels);
     });
@@ -236,21 +211,6 @@ $(document).ready(function () {
             BatteriesArray: GetArray(BattVal, "#BattPicker"),
             ChargersArray: GetArray(ChargerVal, "#ChargerPicker"),
         }
-        //$.ajax({
-        //    url: url,
-        //    type: "POST",
-        //    contentType: "application/json;charset=UTF-8",
-        //    dataType: "json",
-        //    data: JSON.stringify(object),
-        //    success: function (result) {
-        //        if (result == true) {
-        //            $(".result").html(result.toString())
-        //        } else {
-        //            $(".result").html(result.toString())
-        //        }
-        //        $('#DeleteModal').modal("hide");
-        //    }
-        //});
     });
 
     $("#AddeTrike").click(function () {
@@ -301,61 +261,6 @@ $(document).ready(function () {
         });
     });
 
-    //let url = pageURL + "/api/eTrikes/" + id;
-    //let HTML = "";
-    //$.ajax({
-    //    url: url,
-    //    type: "DELETE",
-    //    contentType: "application/json;charset=UTF-8",
-    //    dataType: "json",
-    //    //data: Json,
-    //    success: function (result) {
-
-    //    }
-
-    //HTML += "<div class='row'>";
-    //let keysCount = Object.keys(result).length - 4;
-    //Object.keys(result).forEach((key) => {
-
-    //if (!key.includes("ImagesPath") && !key.includes("Batteries") && !key.includes("Chargers") && !key.includes("Colors")) {
-    //    HTML += "<div class='col-6 p-2'><div class='form-group p-2'>";
-
-    //    if (!key.includes("DescriptionTxt")) {
-    //        HTML += "<label for='" + key + "'>" + key + "</label>";
-    //        HTML += "<input type='text' class='form-control' value='" + result[key] + "'></div></div>";
-    //    } else {
-    //        HTML += "<label for='" + key + "'>Description</label>";
-    //        HTML += "<textarea class='form-control' rows='4'>" + result[key] + "</textarea></div></div>";
-    //    }
-
-    //}
-
-    //<div class="form-group bmd-form-group">
-    //    <div class='input-group'>
-    //        <div class="input-group-prepend">
-    //            <div class="input-group-text"><i class="material-icons">face</i></div>
-    //        </div>
-    //        <div class='form-group'>
-    //            <label for="exampleInputPassword1">Password</label>
-    //            <input type="text" class="form-control" placeholder="First Name...">
-    //                    </div>
-    //        </div>
-    //    </div>
-    //    </div>
-
-    //keysCount = keysCount - 1;
-    //if (keysCount == 0) {
-    //    HTML += "</div>";
-    //}
-
-
-
-
-
-
-
-
-    //////////////////////////////////////////////////////////////
     $sidebar = $('.sidebar');
 
     $sidebar_img_container = $sidebar.find('.sidebar-background');
