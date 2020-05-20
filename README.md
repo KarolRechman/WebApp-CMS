@@ -7,7 +7,7 @@ Projektowanie i programowanie systemów internetowych I
 | HTML5  | Jest  |
 | CSS3  | Jest  |
 | Formularze  | Jest  |
-| Baza danych  | Jest  |
+| Baza danych  | Jest  |Możliwe dodanie skryptu sql z bazą
 | Router  | Jest  |
 | Uwierzytelnienie  | Jest  |Za pomocą Cookies
 | MVC  | Jest  |Hybrydowe, MVVM z API controllerem(MVC)
