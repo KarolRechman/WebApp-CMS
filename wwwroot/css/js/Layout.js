@@ -32,21 +32,14 @@
 });
 
 function ResponsiveNav(Menu) {
-    //var Menu = $("#DDMenu");
     if (window.screen.width < 780 || document.body.clientWidth < 780) {
 
         Menu.removeClass("dropleft");
         Menu.removeClass("dropdown-menu");
 
-        //Menu.parent().addClass("accordion");
         Menu.children().addClass("collapse");
 
         Menu.addClass("MobileListMenu");
-
-        //Menu.parent().find("a").on("click", function () {
-        //    Menu.children().toggleClass("show");
-        //    Menu.css("min-height", "50vh!important;");
-        //});
 
         $("#scroll_Spy").addClass("OverFlowNav");
 
