@@ -315,11 +315,6 @@ namespace Cit_eTrike.Models
             return eTrikeColors;
         }
 
-        //public dynamic GetAllFields()
-        //{
-
-        //}
-
         public string AddeTrike(dynamic eTrike, bool Update, int Id = 0)
         {
             Dictionary<string, object> obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(Convert.ToString(eTrike));
@@ -517,34 +512,7 @@ namespace Cit_eTrike.Models
                         links.Add(link);
                     }
                 }
-                //SqlCommand cmd = new SqlCommand("usp_Get_eTrike_Menu2", con);
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@Id", id);
-
-                //await con.OpenAsync();
-                //SqlDataReader rdr = await cmd.ExecuteReaderAsync();
-                //while (await rdr.ReadAsync())
-                //{
-                //    Links link = new Links();
-
-                //    link.IdLink = Convert.ToInt16(rdr["IdLink"]);
-                //    link.IdParent = Convert.ToInt16(rdr["IdParent"]);
-                //    link.Name = rdr["Name"].ToString();
-                //    link.HTMLidName = rdr["HTMLidName"].ToString();
-                //    link.HasChildren = Convert.ToBoolean(rdr["HasChildren"]);
-
-                //    links.Add(link);
-                //}
-
-                //rdr.Close();
-
-                //foreach (var l in links)
-                //{
-                //    if (l.HasChildren == true)
-                //    {
-                //        l.DropDowns = GetDropDowns(l.IdLink, 0);
-                //    }
-                //}
+               
                 con.Close();
             }
 
@@ -684,35 +652,7 @@ namespace Cit_eTrike.Models
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-        }
-
-        //public List<eTrikeBattery> GetAllBatteries(int id = 0)
-        //{
-        //    List<eTrikeBattery> eTrikeBatteries = new List<eTrikeBattery>();
-
-        //    SqlCommand cmd2 = new SqlCommand("usp_Get_eTrike_Batteries", con);
-        //    cmd2.CommandType = CommandType.StoredProcedure;
-        //    cmd2.Parameters.AddWithValue("@IDeTrike", id);
-
-        //    SqlDataReader rdr2 = cmd2.ExecuteReader();
-        //    while (rdr2.Read())
-        //    {
-        //        eTrikeBattery eTrikeBattery = new eTrikeBattery();
-
-        //        eTrikeBattery.IdBattery = Convert.ToInt16(rdr2["IdBattery"]);
-        //        eTrikeBattery.Name = rdr2["Name"].ToString();
-        //        eTrikeBattery.Power = rdr2["Power"].ToString();
-        //        eTrikeBattery.Price = rdr2["Price"].ToString();
-
-        //        eTrikeBatteries.Add(eTrikeBattery);
-        //    }
-        //    rdr2.Close();
-        //}
-
-        //public List<eTrikeBattery> GetAllChargers()
-        //{
-
-        //}
+        }   
     }
 }
 
