@@ -45,7 +45,7 @@ namespace Cit_eTrike
                                                         options.Conventions.AddPageRoute("/PoliciesPage", "PoliciesPage/{id?}");
                                                         options.Conventions.AddPageRoute("/CategoryPage", "CategoryPage/{id?}");
                                                         options.Conventions.AddPageRoute("/ErrorPage", "ErrorPage/{id?}");                                                       
-                                                        //options.Conventions.AuthorizeFolder("/CMS");
+                                                        options.Conventions.AuthorizeFolder("/CMS");
                                                         options.Conventions.AllowAnonymousToPage("/CMS/LoginPage");
                                                     });
             services.AddLiveReload(config =>
